@@ -10,12 +10,11 @@ class Solution {
         	for(int j=commands[i][0]-1; j<commands[i][1]; j++) {
         		arr.add(array[j]);
         	}
-        	 arr.sort((o1, o2) -> o1 - o2);
-        	 answer[i] = arr.get(commands[i][2]-1);
-        	 arr.clear();
+        	//arr.sort((o1, o2) -> o1 - o2); 
+            Collections.sort(arr);
+            answer[i] = arr.get(commands[i][2]-1);
+        	arr.clear();
         }
-        
-
         
         return answer;
     }
