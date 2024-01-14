@@ -12,7 +12,7 @@ class Solution {
         			}else if(o1.charAt(n) < o2.charAt(n)){
                         return -1;
                     }else{
-                        return o1.compareTo(o2);
+                        return o1.compareTo(o2); //사전순 정렬
                     }
                 }
 		});
