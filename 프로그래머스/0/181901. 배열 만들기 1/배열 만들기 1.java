@@ -2,11 +2,9 @@ class Solution {
     public int[] solution(int n, int k) {
         int[] answer = new int[n/k];
         int j = 0;
-        for(int i=1; i<=n; i++){
-            if(i%k == 0){
-                answer[j] = i; 
-                if(j<= (n/k)-2) j++;
-            }
+        for(int i=k; i<=n; i+=k){
+            answer[(i/k)-1] = i; 
+         
         }
         return answer;
     }
