@@ -1,14 +1,12 @@
 class Solution {
     public int solution(int[] date1, int[] date2) {
         int answer = 0;
-        //for(int i=0; i<date1.length; i++){
-       if(date1[0] <date2[0]) answer = 1;
-        else if (date1[0] == date2[0]){
-            if(date1[1] < date2[1]) answer = 1;
-            else if(date1[1] == date2[1]){
-                if(date1[2] < date2[2]) answer =1;  
-            }
+        int da1 = 0;
+        int da2 =0;
+        for(int i=0; i<date1.length; i++){
+            da1 +=date1[i];
+            da2 += date2[i];
         }
-        return answer;
+        return da1< da2? 1 : 0;
     }
 }
