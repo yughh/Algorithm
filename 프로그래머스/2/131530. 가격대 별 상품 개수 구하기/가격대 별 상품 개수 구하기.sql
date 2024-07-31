@@ -2,7 +2,7 @@
 --이때 컬럼명은 각각 컬럼명은 PRICE_GROUP, PRODUCTS로 지정해주시고
 -- 가격대 정보는 각 구간의 최소금액(10,000원 이상 ~ 20,000 미만인 구간인 경우 10,000)으로 표시해주세요. 
 -- 결과는 가격대를 기준으로 오름차순 정렬해주세요.
-SELECT PRICE_GROUP, count(PRICE_GROUP) as PRODUCTS로
-from (SELECT trunc(PRICE, -4) as PRICE_GROUP from PRODUCT)
-group by PRICE_GROUP
+SELECT  trunc(PRICE, -4) as PRICE_GROUP, count(*) as PRODUCTS
+from PRODUCT
+group by trunc(PRICE, -4)
 order by PRICE_GROUP;
