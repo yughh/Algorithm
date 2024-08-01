@@ -6,12 +6,12 @@
 -- 결과는 대여 기록 ID를 기준으로 내림차순 정렬해주세요.
 SELECT HISTORY_ID
         ,CAR_ID
-        ,to_char(START_DATE, 'YYYY-MM-DD') as START_DATE
-        ,to_char(END_DATE, 'YYYY-MM-DD') as END_DATE
+        ,date_format(START_DATE, '%Y-%m-%d') as START_DATE
+        ,date_format(END_DATE, '%Y-%m-%d') as END_DATE
         ,case
-            when START_DATE +30 <= END_DATE+1 THen '장기 대여'
+            when DATEDIFF(END_DATE, START_DATE)+1 >= 30 THen '장기 대여'
             else '단기 대여'
         END as RENT_TYPE
 FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
-where START_DATE Between to_date('2022-09-01', 'YYYY-MM-DD') AND to_date('2022-09-30', 'YYYY-MM-DD')
+where START_DATE Between cast('2022-09-01' as DATE) AND cast('2022-09-30' as DATE)
 order by HISTORY_ID desc;
