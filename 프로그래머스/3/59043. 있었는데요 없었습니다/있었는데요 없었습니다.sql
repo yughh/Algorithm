@@ -4,10 +4,6 @@
 SELECT o.ANIMAL_ID, o.NAME
 from ANIMAL_OUTS o join ANIMAL_INS i
 on o.ANIMAL_ID = i.ANIMAL_ID
-where TIMESTAMPDIFF(second, i.DATETIME, o.datetime) < 0
+#where TIMESTAMPDIFF(second, i.DATETIME, o.datetime) < 0
+where i.DATETIME > o.datetime
 order by i.DATETIME ;
-# SELECT o.ANIMAL_ID, o.NAME, i.DATETIME, o.datetime
-# from ANIMAL_OUTS o join ANIMAL_INS i
-# on o.ANIMAL_ID = i.ANIMAL_ID
-# where DATEDIFF(o.DATETIME, i.DATETIME ) < 0
-# order by i.DATETIME  ;
