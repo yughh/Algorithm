@@ -5,9 +5,10 @@
 # 결과는 회원 ID를 기준으로 내림차순 정렬해주세요.
 SELECT USER_ID
         ,NICKNAME
-        ,concat(concat(concat(concat(CITY, " "), STREET_ADDRESS1), " "), STREET_ADDRESS2) as `전체주소`
-        ,concat(concat(concat(concat(substring(TLNO, 1, 3), "-"),  substring(TLNO, 4, 4)), "-"),  substring(TLNO, 8, 4)) as `전화전호`
-        
+        # ,concat(concat(concat(concat(CITY, " "), STREET_ADDRESS1), " "), STREET_ADDRESS2) as `전체주소`
+        # ,concat(concat(concat(concat(substring(TLNO, 1, 3), "-"),  substring(TLNO, 4, 4)), "-"),  substring(TLNO, 8, 4)) as `전화전호`
+        ,concat(CITY, " ", STREET_ADDRESS1, " ", STREET_ADDRESS2) as `전체주소`
+        ,concat(substring(TLNO, 1, 3), "-",substring(TLNO, 4, 4), "-", substring(TLNO, 8, 4)) as `전화전호`
         
 from  USED_GOODS_USER 
 where user_id in(
