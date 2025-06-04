@@ -1,9 +1,7 @@
--- 관리자의 실수로 일부 동물의 입양일이 잘못 입력되었습니다. 
--- 보호 시작일보다 입양일이 더 빠른 동물의 아이디와 이름을 조회하는 SQL문을 작성해주세요
--- . 이때 결과는 보호 시작일이 빠른 순으로 조회해야합니다.
-SELECT o.ANIMAL_ID, o.NAME
-from ANIMAL_OUTS o join ANIMAL_INS i
+-- 코드를 입력하세요
+select t.ANIMAL_ID, t.NAME
+from (SELECT o.ANIMAL_ID, o.NAME, i.DATETIME
+from ANIMAL_INS as i join ANIMAL_OUTS as o
 on o.ANIMAL_ID = i.ANIMAL_ID
-#where TIMESTAMPDIFF(second, i.DATETIME, o.datetime) < 0
-where i.DATETIME > o.datetime
-order by i.DATETIME ;
+where o.DATETIME < i.DATETIME
+order by i.DATETIME) as t
