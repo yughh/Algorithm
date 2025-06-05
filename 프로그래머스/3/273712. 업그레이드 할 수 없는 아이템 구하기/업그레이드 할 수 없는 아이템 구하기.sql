@@ -1,11 +1,19 @@
--- 더 이상 업그레이드할 수 없는 아이템의 아이템 ID(ITEM_ID), 아이템 명(ITEM_NAME), 아이템의 희귀도(RARITY)를 출력하는 
-# SQL 문을 작성해 주세요. 이때 결과는 아이템 ID를 기준으로 내림차순 정렬해 주세요.
-select i.ITEM_ID
-        ,i.ITEM_NAME
-        ,i.RARITY
-from ITEM_INFO i left outer join ITEM_TREE t
-on i.ITEM_ID = t.PARENT_ITEM_ID
-where PARENT_ITEM_ID is null
-order by i.ITEM_ID desc
-;
+# -- 코드를 작성해주세요
+select 
+ITEM_ID
+,ITEM_NAME
+,RARITY
+from ITEM_INFO
+where ITEM_ID in (select ITEM_ID
+from
+(select 
+ITEM_ID
+from ITEM_TREE )p1 
 
+left outer join
+(select 
+PARENT_ITEM_ID
+from ITEM_TREE )p2
+on p1.ITEM_ID = p2.PARENT_ITEM_ID
+where p2.PARENT_ITEM_ID is null )
+order by ITEM_ID desc;
